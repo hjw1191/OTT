@@ -101,6 +101,15 @@ function DramaPage() {
           ))}
         </div>
       </div>
+
+      {/* 비디오 섹션 추가 */}
+      <div style={{ marginTop: '250px', textAlign: 'center' }}>
+        <figure className="wp-block-video">
+        <figcaption className="wp-element-caption">Stable Video / ChatGPT / Midjourney를 활용하여 제작한 영화 예고편</figcaption>
+          <video autoPlay  muted controls src="https://smilegate.ai/wp-content/uploads/2024/05/@공허의-속삭임.mp4"></video>
+          
+        </figure>
+      </div>
     </div>
   );
 }
