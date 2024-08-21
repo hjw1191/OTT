@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-container {
+  margin-top: 50px; /* 추가된 코드 */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  height: 18em; /* 슬라이더 높이 설정 */
+}
+
+.slider-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.reverse .slider-track {
+  animation-direction: reverse;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: calc(100% / 6); /* 한 화면에 6개가 보이도록 설정 */
+  width: fit-content;
+  aspect-ratio: auto;
+  height: 20em;
+  padding: 0 10px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: black;
+  background-color: #000000;
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}

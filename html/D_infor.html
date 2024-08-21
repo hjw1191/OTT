@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>굿파트너 | 키노라이츠</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden; /* 하단 스크롤 없애기 */
+        }
+
+        .navbar-brand {
+            color: #ff0055 !important;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            font-size: 1.2em;
+        }
+
+        .container::after {
+            content: "";
+            width: 100vw;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url('https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240617/1220/P001758024.jpg/dims/resize/F_webp,480');
+            z-index: -1; /* 배경 이미지를 컨테이너 뒤로 보내기 위해 z-index 추가 */
+            opacity: 0.2; /* 배경 이미지 투명도 조절 */
+        }
+        
+        .container {
+            width: 100%;
+            height: auto;
+            padding: 4em; 
+            margin: 0;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 4; /* 컨테이너를 배경 이미지 위로 올리기 위해 z-index 추가 */
+        }
+
+        .poster1 {
+            margin-right: 50px; /* 오른쪽 패딩 50px 추가 */
+            margin-left: auto; /* 오른쪽 정렬 */
+            width: 500px;
+            z-index: 2;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header .info {
+            max-width: 60%;
+        }
+
+        .header .poster {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            z-index: 2; /* 포스터를 배경 이미지 위로 올리기 위해 z-index 추가 */
+        }
+
+        .header .info img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .header .info p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.6; /* 문장 사이 높이 조절 */
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin: 40px 0 40px 0;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff000d;
+            color: white;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        .buttons button:hover {
+            background-color: #f40612;
+        }
+
+        .tag_wrap {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            z-index: 4;
+        }
+
+        .tag {
+            background-color: #444;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #fff;
+           
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            flex-direction: column;
+            overflow: hidden; /* 슬라이드의 내용이 넘치지 않도록 설정 */
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
+            height: auto;
+        }
+
+        .swiper-text {
+            background-color: #000000;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 10px; /* 텍스트와 이미지 사이의 간격 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="title.html">LINK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="drama.html">Drama</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Movies.html">Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MUSIC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TRAILER</a>
+                </li>
+            </ul>
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search for movies...">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="info">
+                <img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP1800/ko/20240617/0251/P001758024.png/dims/resize/800" alt="감사합니다">
+                <div class="tag_wrap">
+                    <div class="tag">15</div>
+                    <div class="tag">토일 오후 9:20</div>
+                    <div class="tag">드라마</div>
+                    <div class="tag">tvN</div>
+                    <div class="tag">시즌 1개</div>
+                    <div class="tag">해설자막</div>
+                    <a href="D_ost.html" style="text-decoration: none;">
+                    <div class="tag">OST</div></a>
+                </div>
+                    
+                <div class="buttons">
+                    <button >LINK</button>
+                </div> 
+
+                <p>크리에이터: 권영일</p>
+                <p>출연: 신하균, 이정하, 진구, 조아람</p>
+                <p>횡령, 비리, 사건사고가 끊이지 않는 건설회사 감사팀. 회사 갉아먹는 쥐새끼들 </P>
+                <a>소탕하러 온 이성파 감사팀장 신차일과 감성파 신입 구한수의 본격 오피스 클린 활극</a>
+            </div>
+            
+            <div class="poster1">
+
+                
+                <img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240617/1220/P001758024.jpg/dims/resize/F_webp,480" alt="감사합니다 포스터" class="poster" style="
+                width: 400px;
+                margin-left: 47vw;
+            ">
+        </div>
+
+        
+        </div>
+    </div>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://player8.media-frame.org/video/Y4u7F9C3ByDsBa8"><img src="https://image.tving.com/ntgs/contents/CTC/caie/CAIE0400/com/20240706/0050/E004204430.jpg/dims/resize/600" 
+                 alt="감사합니다 1화"></a>
+                <div class="swiper-text"> 감사합니다 1화</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://image.tving.com/ntgs/contents/CTC/caie/CAIE0400/com/20240707/0100/E004205695.jpg/dims/resize/600" alt="감사합니다 2화">
+                <div class="swiper-text"> 감사합니다 2화</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://image.tving.com/ntgs/contents/CTC/caie/CAIE0400/com/20240713/0740/E004208384.jpg/dims/resize/600" alt="감사합니다 3화">
+                <div class="swiper-text"> 감사합니다 3화</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://image.tving.com/ntgs/contents/CTC/caie/CAIE0400/com/20240714/0155/E004209240.jpg/dims/resize/600" alt="감사합니다 4화">
+                <div class="swiper-text"> 감사합니다 4화</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://image.tving.com/ntgs/contents/CTC/caie/CAIE0400/com/20240714/0155/E004209240.jpg/dims/resize/600" alt="감사합니다 4화">
+                <div class="swiper-text"> 감사합니다 4화</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            freeMode: true,
+            navigation: false,
+        });
+
+       
+      
+    
+    </script>
+</body>
+</html>

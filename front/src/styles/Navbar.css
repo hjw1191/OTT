@@ -1,0 +1,73 @@
+/* Navbar Styles */
+.navbar {
+    background-color: black !important;
+    padding: 20px 60px 0 60px !important;
+}
+
+.navbar-brand {
+    color: #ff0055;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+.nav-link:hover {
+    color: #ff0055;
+}
+
+/* Flexbox for Login */
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-link {
+    color: #ff0055 !important;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+/* Dropdown Styles */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    background-color: #000000;
+    border: none;
+}
+
+.dropdown-item {
+    color: #ffffff;
+}
+
+.dropdown-item:hover {
+    color: #ff0055;
+    background-color: #000000;
+}
+
+/* Search Bar Styles */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff0055;
+    color: white;
+}

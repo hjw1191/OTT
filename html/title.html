@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #dynamic-text {
+            font-size: 6em;
+            color: rgb(255, 0, 34);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .container p {
+            font-size: 1.3em;
+            color: #ffffff;
+        }
+        .main-image-container {
+            position: relative;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .main-image-container img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid p-0">
+        <div class="main-image-container">
+            <img src="https://cdn.pdjournal.com/news/photo/202308/75317_78301_044.jpg">
+            <div class="overlay-text">
+                <h1><a id="dynamic-text" href="/Drama.html"></a></h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // 동적 텍스트 배열
+        const textArray = ["LINK"];
+        let textIndex = 0;
+        let charIndex = 0;
+
+        // 타이핑 함수
+        function type() {
+            if (charIndex < textArray[textIndex].length) {
+                // 텍스트 추가
+                document.getElementById("dynamic-text").style.visibility = "visible";
+                document.getElementById("dynamic-text").textContent += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 3000); // 텍스트 출력 후 지우기 함수 호출
+            }
+        }
+
+        // 텍스트 지우기 함수
+        function erase() {
+            if (charIndex > 0) {
+                // 텍스트 제거
+                document.getElementById("dynamic-text").textContent = textArray[textIndex].substring(0, charIndex-1);
+                charIndex--;
+                setTimeout(erase, 100);
+            } else {
+                document.getElementById("dynamic-text").style.visibility = "hidden";
+                // 다음 텍스트로 이동
+                textIndex = (textIndex + 1) % textArray.length;
+                setTimeout(type, 1500);
+            }
+        }
+
+        // DOM 로드 후 타이핑 함수 실행
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, 1500);
+        });
+    </script>
+</body>
+</html>

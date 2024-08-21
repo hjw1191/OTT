@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: white;
+}
+
+.movie-detail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 95vh; /* 페이지 전체 높이로 설정 */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.774); /* 백그라운드 이미지를 어둡게 처리 */
+    z-index: 1;
+}
+
+.poster {
+    max-width: 50%; /* 포스터 이미지가 전체의 50%를 차지하도록 설정 */
+    margin-right: 20px;
+    z-index: 2; /* 포스터 이미지가 어둡게 처리된 배경 위에 표시되도록 */
+}
+
+.poster-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.movie-info {
+    max-width: 50%;
+    z-index: 2; /* 영화 정보가 어둡게 처리된 배경 위에 표시되도록 */
+    display: flex;
+    flex-direction: column; /* 텍스트를 세로로 배치 */
+    justify-content: flex-start; /* 텍스트가 위쪽에 정렬되도록 설정 */
+    overflow: hidden; /* 텍스트가 넘치면 숨기도록 설정 */
+}
+
+.movie-title {
+    margin-top: 20%;
+    margin-bottom: 5%;
+    font-size: 2.5em;
+    color: #f15252;
+}
+
+.genre, .rating, .release-date {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    color: rgba(255, 0, 0, 0.712); /* 별표를 빨간색으로 변경 */
+    margin-left: 10px;
+}
+
+.description {
+    font-size: 1.2em;
+    margin: 20px 0;
+    line-height: 1.5;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    overflow: auto; /* 텍스트가 넘치면 스크롤 생기도록 설정 */
+    max-height: 300px; /* 텍스트 영역의 최대 높이를 설정 */
+}
+
+.description::first-letter {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.extra-info {
+    display: flex;
+    gap: 10px; /* 둥근 상자 사이 간격 조정 */
+    margin: 20px 0 50px; /* 줄거리 텍스트 사이에 공간 배치 */
+}
+
+.small-info-box {
+    padding: 10px; /* 내부 패딩 조정 */
+    border-radius: 15px;
+    background-color: #161616;
+    flex: 1;
+    text-align: center;
+    max-width: 100px;
+}
+
+.small-info-box h3 {
+    margin-bottom: 5px;
+    font-size: 1em;
+    color: #ff6b6b;
+}
+
+.small-info-box p {
+    font-size: 0.5em;
+    color: #ccc;
+}
+
+/* 모달 오버레이 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 컨텐츠 스타일 */
+.modal-content {
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+}
+
+/* 모달 닫기 버튼 스타일 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}

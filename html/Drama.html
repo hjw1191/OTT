@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+          
+        }
+       
+        .navbar-brand {
+            color: #ff0055 !important;
+            font-weight: bold;
+            font-size: 2em;
+            
+        }
+        .nav-link {
+            color: #ffffff !important;
+            font-size: 1.2em;
+            
+        }
+
+        /* 슬라이더 스타일링 */
+        .swiper-container {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(70, 54, 54, 0.1);
+            height: 18em;
+            width: 20em; /* 카드의 너비를 고정된 크기로 설정 */
+            
+        }
+        .swiper2 {
+            margin: 0 5em;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+           
+        }
+
+        .swiper-slide a{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        /* 검색창 스타일 */
+        .search-container {
+            text-align: center;
+         
+        }
+        .search-input {
+            width: 90%;
+            max-width: 600px;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-Dark">
+        <a class="navbar-brand" href="title.html">LINK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="drama.html">Drama</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Movies.html">Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MUSIC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TRAILER</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+    </div>
+
+    <!-- 첫 번째 슬라이드 -->
+    <div class="swiper-container swiper1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP1130/ko/20240416/0652/P001754312.jpg/dims/resize/F_webp,400" alt="Card 1"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240522/0505/P001757060.jpg/dims/resize/F_webp,400" alt="Card 2"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240718/0018/P001759281.jpg/dims/resize/F_webp,400" alt="Card 3"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240731/0016/P001759776.jpg/dims/resize/F_webp,400" alt="Card 4"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP1150/ko/20240708/2250/P001758093.jpg/dims/resize/F_webp,400" alt="Card 5"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20231030/0130/P001392765.jpg/dims/resize/F_webp,400" alt="Card 6"></div>
+            <a class="swiper-slide" href="D_infor.html">
+            <img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP1160/ko/20240720/0253/P001758024.jpg/dims/resize/F_webp,400" alt="감사합니다">
+            </a>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caim/CAIM2100/ko/20240731/0035/M000377393.jpg/dims/resize/F_webp,400" alt="Card 8"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240625/0236/P001758352.jpg/dims/resize/F_webp,400" alt="Card 9"></div>
+        </div>
+    </div>
+
+    <!-- 두 번째 슬라이드 -->
+    <div class="swiper-container swiper2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP1150/ko/20240416/0652/P001754312.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src="https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240522/0505/P001757060.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP1150/ko/20240623/0449/P001756817.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20231025/1510/P001492081.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP1110/ko/20240628/0311/P001757086.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240709/0425/P001758910.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP1140/ko/20240720/0253/P001758024.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20240415/1250/P001609758.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20231026/1510/P001632868.jpg/dims/resize/F_webp,400"></div>
+            <div class="swiper-slide"><img src= "https://image.tving.com/ntgs/contents/CTC/caip/CAIP0900/ko/20231030/0505/P000643144.jpg/dims/resize/F_webp,400"></div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper1 = new Swiper('.swiper1', {
+        loop: true,
+        autoplay: {
+            delay: 1500, // 지연 시간을 늘려 부드럽게 이동
+            disableOnInteraction: false,
+        },
+        speed: 1500, // 이동 속도를 늘려 부드럽게 이동
+        slidesPerView: 6,
+        spaceBetween: 30,
+    });
+
+    var swiper2 = new Swiper('.swiper2', {
+        loop: true,
+        autoplay: {
+            delay: 1700, // 지연 시간을 늘려 부드럽게 이동
+            reverseDirection: true,
+            disableOnInteraction: false,
+        },
+        speed: 1000, // 이동 속도를 늘려 부드럽게 이동
+        slidesPerView: 6,
+        spaceBetween: 30,
+    });
+</script>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
