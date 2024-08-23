@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';  
 import '../styles/Drama.css';  
+import '../styles/Title.css';
+import L from '../components/L.png';
+import I from '../components/I.png';
+import N from '../components/N.png';
+import K from '../components/K.png';
 
 function DramaPage() {
   const [dramas, setDramas] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
 
   // 데이터 로드
   useEffect(() => {
-    console.log("Fetching dramas..."); // API 호출 시작 시 로그
+    console.log("Fetching dramas...");
     fetch('http://localhost:8080/api/dramas')
       .then(response => {
         if (!response.ok) {
@@ -20,7 +24,7 @@ function DramaPage() {
         return response.json();
       })
       .then(data => {
-        console.log("Dramas fetched successfully:", data); // API 응답 데이터 로그
+        console.log("Dramas fetched successfully:", data);
         setDramas(data);
       })
       .catch(error => console.error('데이터 가져오기 오류:', error));
@@ -36,31 +40,15 @@ function DramaPage() {
 
   // 이미지 클릭 시 페이지 이동 함수
   const handleImageClick = (dramaId) => {
-    console.log("Clicked drama ID:", dramaId); // ID 확인용 로그
-    navigate(`/D_infor/${dramaId}`); // 해당 드라마 ID를 기반으로 D_infor 페이지로 이동
+    console.log("Clicked drama ID:", dramaId);
+    navigate(`/D_infor/${dramaId}`);
   };
 
   return (
     <div>
-      <Navbar />
+      <Title />
 
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            width: '40%',
-            padding: '10px',
-            margin: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-          }}
-        />
-      </div>
-
-      <div className="slider-container">
+      <div className="slider-container" style={{ marginTop: "150px" }}>
         <div className="slider-track">
           {extendedDramas.map((drama, index) => (
             <div className="slide" key={index}>
@@ -69,11 +57,8 @@ function DramaPage() {
                   src={drama.image_url} 
                   className="card-img-top" 
                   alt={drama.title} 
-                  style={{ 
-                    width: '100%', 
-                    height: '100%',
-                  }} 
-                  onClick={() => handleImageClick(drama._id)} // 클릭 시 페이지 이동
+                  style={{ width: '100%', height: '100%' }} 
+                  onClick={() => handleImageClick(drama._id)}
                 />
               </div>
             </div>
@@ -90,11 +75,8 @@ function DramaPage() {
                   src={drama.image_url} 
                   className="card-img-top" 
                   alt={drama.title} 
-                  style={{ 
-                    width: '100%', 
-                    height: '100%',
-                  }} 
-                  onClick={() => handleImageClick(drama._id)} // 클릭 시 페이지 이동
+                  style={{ width: '100%', height: '100%' }} 
+                  onClick={() => handleImageClick(drama._id)}
                 />
               </div>
             </div>
@@ -103,15 +85,43 @@ function DramaPage() {
       </div>
 
       {/* 비디오 섹션 추가 */}
-      <div style={{ marginTop: '250px', textAlign: 'center' }}>
+      <div style={{ marginTop: '200px', textAlign: 'center' }}>
         <figure className="wp-block-video">
-        <figcaption className="wp-element-caption">Stable Video / ChatGPT / Midjourney를 활용하여 제작한 영화 예고편</figcaption>
-          <video autoPlay  muted controls src="https://smilegate.ai/wp-content/uploads/2024/05/@공허의-속삭임.mp4"></video>
-          
+          <figcaption className="wp-element-caption">Stable Video / ChatGPT / Midjourney를 활용하여 제작한 영화 예고편</figcaption>
+          <video autoPlay muted controls src="https://smilegate.ai/wp-content/uploads/2024/05/@공허의-속삭임.mp4"></video>
         </figure>
       </div>
     </div>
   );
 }
+
+const Title = () => {
+  const navigate = useNavigate()
+  return (
+    <div className="container-fluid p-0">
+      <div className="main-image-container">
+        <img
+          src="https://cdn.pdjournal.com/news/photo/202308/75317_78301_044.jpg"
+          alt="Main Background"
+          className="background-image"
+        />
+        <div className="overlay-text">
+          <h1>
+            <div 
+              className="link-container" 
+              onClick={() => navigate('/Movies')} // 클릭 시 /Movies 페이지로 이동
+              style={{ cursor: 'pointer' }} // 클릭 가능한 느낌을 주기 위해 포인터 커서 적용
+            >
+            <img src={L} alt="L" className="letter" />
+              <img src={I} alt="I" className="letter" />
+              <img src={N} alt="N" className="letter" />
+              <img src={K} alt="K" className="letter" />
+            </div>
+          </h1>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default DramaPage;

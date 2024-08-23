@@ -9,7 +9,7 @@ const MovieCard = ({ movie, onClick }) => {
         onClick={onClick} // 이미지 클릭 시 onClick 이벤트 발생
         style={{ cursor: 'pointer' }}
       />
-      <h5>{movie.title}</h5>
+
     </li>
   );
 };

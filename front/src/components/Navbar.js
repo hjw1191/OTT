@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query) {
+      onSearch(query); // 부모 컴포넌트로 검색어를 전달하여 검색 수행
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">LINK</a>
@@ -10,18 +19,20 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="drama">Drama</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="Movies">Movie</a>
-          </li>
-        </ul>
+        
+        <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
+          <input
+            className="form-control mr-sm-2"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for movies..."
+          />
+        
+        </form>
         <ul className="navbar-nav ml-auto">
-    
           <li className="nav-item">
-            <a className="login-link nav-link" href="#">login</a>
+            <a className="nav-link" href="/login">Login</a>
           </li>
         </ul>
       </div>

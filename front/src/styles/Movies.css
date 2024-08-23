@@ -1,106 +1,73 @@
-/* 전체 컨테이너 스타일 */
-.container {
-    text-align: center;
-    margin: 10px;
-    padding-left: 20px;
-    width: 95vw; /* 전체 컨테이너의 넓이를 카드 목록과 동일하게 설정 */
-    box-sizing: border-box;
-}
-
-/* 영화 리스트 스타일 */
-#movie-list {
+.btn-group{
+    margin-left: 0;
+  }
+  /* 인기영화 슬라이더 스타일 */
+  .popular-section .movie-card-slider {
+    width: calc(25% - 20px); /* 슬라이더 내 카드의 크기 조절 */
+    margin: 0 10px;
+  }
+  
+  /* 인기영화 리스트 스타일 */
+  #movie-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-wrap: wrap; /* 여러 줄에 걸쳐 카드를 배치하도록 설정 */
+    gap: 16px; /* 카드 간의 간격 설정 */
     padding: 0;
-    width: 95vw;
     list-style: none;
-    justify-content: center;
-}
-
-/* 개별 영화 카드 스타일 */
-.movie-card {
-    list-style: none;
-    width: calc(25% - 20px);
+    justify-content: center; /* 카드들을 가운데 정렬 */
+  }
+  
+  #movie-list li {
+    flex: 0 1 calc(20% - 16px); /* 카드가 한 줄에 5개 나오도록 설정 */
+    margin: 8px; /* 카드 주위에 간격 추가 */
+  }
+  
+  /* 트렌딩 섹션 스타일 */
+  .trend-section .movie-card-slider {
+    width: calc(25% - 20px); /* 슬라이더 내 카드의 크기 조절 */
+    margin: 0 10px;
+  }
+  
+  h3{
+    color: #8b1717;
+  }
+  /* 공통 카드 스타일 */
+  .movie-card {
     cursor: pointer;
     text-align: center;
-    background-color: #000; /* 카드 배경색을 검정색으로 설정 */
-    color: #fff; /* 텍스트 색상을 흰색으로 설정 */
+    background-color: #000;
+    color: #fff;
     border-radius: 8px;
     padding: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.movie-card:hover {
-    transform: scale(1.05); /* 마우스를 올렸을 때 살짝 확대 효과 */
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.movie-card img {
+  }
+  
+  .movie-card img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-}
-
-/* 검색창과 버튼들 스타일 */
-.search-and-buttons {
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between; /* 검색창은 왼쪽, 버튼들은 오른쪽 정렬 */
-    width: 95vw; /* 부모 컨테이너의 넓이를 95vw로 설정 */
-    align-items: center; /* 요소들을 수직으로 중앙 정렬 */
-    margin-bottom: 20px;
-}
-
-form.d-flex {
-    display: flex;
-    justify-content: flex-start; /* 검색창을 왼쪽 정렬 */
-}
-
-form.d-flex input[type="text"] {
-    width: 300px; /* 검색창 너비 설정 */
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-form.d-flex button {
-    padding: 5px 15px;
-    border-radius: 4px;
-    background-color: #dc3545; /* 버튼 배경색 빨강 */
+  }
+  .top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background-color: #dc3545;
     color: white;
     border: none;
+    border-radius: 50%;
+    padding: 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
-}
-
-form.d-flex button:hover {
-    background-color: #c82333; /* 버튼 마우스 오버 시 색상 변경 */
-}
-
-/* 장르 버튼 스타일 */
-.btn-group {
-    display: flex;
-    justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
-    gap: 5px; /* 버튼 사이 간격 */
-    flex-wrap: wrap;
-}
-
-.btn-group .btn {
-    font-size: 12px; /* 장르 버튼 글자 크기 */
-    padding: 5px 10px; /* 장르 버튼 패딩 */
-    border-radius: 4px;
-    color: #dc3545;
-    border: 1px solid #dc3545;
-    background-color: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    text-align: center;
-}
-
-.btn-group .btn:hover {
-    background-color: #dc3545; /* 장르 버튼 마우스 오버 시 배경색 변경 */
-    color: white; /* 장르 버튼 마우스 오버 시 글자 색상 변경 */
-}
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .top-button:hover {
+    background-color: #c82333;
+  }
