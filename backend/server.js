@@ -9,6 +9,12 @@ app.use(express.static(__dirname + '/public'));
 
 const url = 'mongodb+srv://hjw1191:zxc123@hjw1191.zaqklsn.mongodb.net/?retryWrites=true&w=majority&appName=hjw1191'; 
 
+// MongoClient 객체 생성
+const client = new MongoClient(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 client.connect()
   .then(() => {
     console.log('DB 연결 성공');
