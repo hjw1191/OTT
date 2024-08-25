@@ -16,7 +16,7 @@ function DramaPage() {
   // 데이터 로드
   useEffect(() => {
     console.log("Fetching dramas...");
-    fetch('http://localhost:8080/api/dramas')
+    fetch('https://port-0-ott-m09fpvc47fc6ed1f.sel4.cloudtype.app/api/dramas')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
