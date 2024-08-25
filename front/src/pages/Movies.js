@@ -38,7 +38,6 @@ const Movies = () => {
   useEffect(() => {
     fetchMovies(popularMoviesUrl, setPopularMovies);
     fetchMovies(trendingMoviesUrl, setTrendingMovies);
-    fetchMovies(popularMoviesUrl, setMovies);
   }, []);
 
   useEffect(() => {
@@ -68,12 +67,19 @@ const Movies = () => {
     }
   }, [page]);
 
-  const fetchMovies = (url, setStateCallback) => {
+  const fetchMovies = (url, setStateCallback, reset = false) => {
     setIsLoading(true);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setStateCallback((prevMovies) => [...prevMovies, ...data.results]);
+        const uniqueMovies = data.results.filter((movie, index, self) =>
+          index === self.findIndex((m) => m.id === movie.id)
+        );
+        if (reset) {
+          setStateCallback(uniqueMovies);
+        } else {
+          setStateCallback((prevMovies) => [...prevMovies, ...uniqueMovies]);
+        }
         setIsLoading(false);
       })
       .catch((error) => {
@@ -107,14 +113,21 @@ const Movies = () => {
       if (genreId) {
         setPage(1);
         setGenreSelected(true);
+        setMovies([]); // 기존 영화 리스트를 초기화
         const genreMoviesUrlWithPage = genreMoviesUrl(genreId);
-        fetchMovies(genreMoviesUrlWithPage, setMovies);
+        console.log(`Fetching movies for genre: ${genre}, URL: ${genreMoviesUrlWithPage}`);
+        fetchMovies(genreMoviesUrlWithPage, setMovies, true);
       }
     }
   };
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getFilteredMovies = () => {
+    const movieIdsInSliders = [...popularMovies, ...trendingMovies].map(movie => movie.id);
+    return movies.filter(movie => !movieIdsInSliders.includes(movie.id));
   };
 
   const sliderSettings = {
@@ -192,8 +205,8 @@ const Movies = () => {
         )}
 
         <ul id="movie-list" className="list-unstyled mt-4">
-          {movies.length > 0 ? (
-            movies.map((movie) => (
+          {getFilteredMovies().length > 0 ? (
+            getFilteredMovies().map((movie) => (
               <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie)} />
             ))
           ) : (
@@ -204,7 +217,7 @@ const Movies = () => {
 
         {showTopButton && (
           <button onClick={handleScrollToTop} className="top-button">
-           ▲Top
+            ▲Top
           </button>
         )}
       </div>
