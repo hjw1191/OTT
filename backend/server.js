@@ -1,33 +1,31 @@
 const express = require('express');
+const app = express();
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
 
-const app = express();
-app.use(cors()); // CORS 문제 해결
-app.use(express.static(__dirname + '/public')); // 정적 파일 제공
-app.set('view engine', 'ejs'); // 템플릿 엔진 설정
+app.use(cors());
+app.use(express.json()); // JSON 요청을 처리하기 위해 필요
+app.use(express.static(__dirname + '/public'));
 
-const url = 'mongodb+srv://hjw1191:zxc123@hjw1191.zaqklsn.mongodb.net/?retryWrites=true&w=majority&appName=hjw1191';
+const url = 'mongodb+srv://hjw1191:zxc123@hjw1191.zaqklsn.mongodb.net/?retryWrites=true&w=majority&appName=hjw1191'; 
 const client = new MongoClient(url);
 
 client.connect()
   .then(() => {
     console.log('DB 연결 성공');
-    const db = client.db('forum'); // forum 데이터베이스 연결
-    const linkCollection = db.collection('link'); // link 컬렉션 연결
+    const db = client.db('forum');
+    const linkCollection = db.collection('link');
 
-    // 전체 드라마 목록을 가져오는 엔드포인트
     app.get('/api/dramas', async (req, res) => {
       try {
         const dramas = await linkCollection.find().toArray();
-        res.json(dramas); // 드라마 데이터를 JSON 형식으로 리턴
+        res.json(dramas);
       } catch (err) {
         console.error('DB 조회 중 오류 발생:', err);
         res.status(500).send('DB 조회 중 오류 발생');
       }
     });
 
-    // 특정 드라마 ID로 데이터를 가져오는 엔드포인트
     app.get('/api/dramas/:id', async (req, res) => {
       try {
         const dramaId = req.params.id;
@@ -47,10 +45,10 @@ client.connect()
       }
     });
 
+    app.listen(8080, () => {
+      console.log('http://localhost:8080 에서 서버 실행 중');
+    });
   })
   .catch((err) => {
     console.error('DB 연결 실패:', err);
   });
-
-// Vercel에서 이 모듈을 내보내기
-module.exports = app;
