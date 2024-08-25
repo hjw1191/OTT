@@ -8,13 +8,6 @@ app.use(express.json()); // JSON 요청을 처리하기 위해 필요
 app.use(express.static(__dirname + '/public'));
 
 const url = 'mongodb+srv://hjw1191:zxc123@hjw1191.zaqklsn.mongodb.net/?retryWrites=true&w=majority&appName=hjw1191'; 
-const client = new MongoClient(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  tls: true,
-  serverSelectionTimeoutMS: 5000, // 서버 선택 타임아웃 5초
-  socketTimeoutMS: 45000, // 소켓 타임아웃 45초
-});
 
 client.connect()
   .then(() => {
