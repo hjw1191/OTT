@@ -12,7 +12,7 @@ function D_infor() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8080/api/dramas/${id}`)
+      fetch(`https://port-0-ott-m09fpvc47fc6ed1f.sel4.cloudtype.app/${id}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
