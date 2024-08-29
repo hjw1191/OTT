@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -9,6 +9,7 @@ import L from '../components/L.png';
 import I from '../components/I.png';
 import N from '../components/N.png';
 import K from '../components/K.png';
+import { AuthContext } from '../App'; // AuthContext 가져오기
 
 function DramaPage() {
   const [dramas, setDramas] = useState([]);
@@ -68,7 +69,7 @@ function DramaPage() {
         </div>
       </div>
 
-      <div className="slider-container reverse" >
+      <div className="slider-container reverse">
         <div className="slider-track">
           {extendedDramas.reverse().map((drama, index) => (
             <div className="slide" key={index}>
@@ -98,7 +99,9 @@ function DramaPage() {
 }
 
 const Title = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext); // 로그인 상태 확인
+
   return (
     <div className="container-fluid p-0">
       <div className="main-image-container">
@@ -112,8 +115,9 @@ const Title = () => {
             <div 
               className="link-container" 
               style={{ cursor: 'pointer' }} // 클릭 가능한 느낌을 주기 위해 포인터 커서 적용
+              onClick={isLoggedIn ? () => navigate('/movies') : undefined} // 로그인 시에만 링크 작동
             >
-            <img src={L} alt="L" className="letter" />
+              <img src={L} alt="L" className="letter" />
               <img src={I} alt="I" className="letter" />
               <img src={N} alt="N" className="letter" />
               <img src={K} alt="K" className="letter" />
