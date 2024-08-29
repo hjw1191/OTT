@@ -1,7 +1,7 @@
 /* Navbar Styles */
 .navbar {
     background-color: black !important;
-    padding: 20px 60px 0 60px !important;
+    padding: 10px 60px 0 60px !important;
 }
 
 .navbar-brand {
@@ -11,12 +11,16 @@
 }
 
 .nav-link {
-    color: #ffffff;
+    color: #ff0055;
     font-size: 1.2em;
+    position: absolute;
+    right: 30px;
+    top:15px; 
+   
 }
 
 .nav-link:hover {
-    color: #ff0055;
+    color: #ffffff;
 }
 
 /* Flexbox for Login */
