@@ -1,16 +1,14 @@
 .login-overlay {
     position: fixed;
-    padding-top: 10%;
-    padding-left: 30%;
     inset: 0;
     background: rgba(0, 0, 0, 0.85); /* 배경 검정색 */
-    display: block;
+    display: flex; /* display: block -> flex로 변경하여 중앙 정렬 */
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .login-content {
+}
+
+.login-content {
     background: #2d2d2d; /* 약간 어두운 배경 */
     padding: 24px;
     border-radius: 8px;
@@ -18,9 +16,9 @@
     max-width: 400px;
     width: 100%;
     position: relative;
-  }
-  
-  .login-close {
+}
+
+.login-close {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -28,84 +26,91 @@
     background: none;
     font-size: 20px;
     cursor: pointer;
-    color: #ffffff; /* 닫기 버튼 빨강색 */
-  }
-  
-  .login-title {
-    color: #ffffff; /* 타이틀 빨강색 */
+    color: #ff5252; /* 닫기 버튼 빨강색 */
+}
+
+.login-title {
+    color: #ff5252; /* 타이틀 빨강색 */
     text-align: center;
     margin-bottom: 16px;
     font-size: 24px;
     font-weight: bold;
-  }
-  
-  .login-form {
+}
+
+.login-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
-  }
-  
-  .login-input {
+}
+
+.login-input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
     border: 1px solid #444;
     background: #1e1e1e;
-    color: #ffffff; /* 입력 필드 텍스트 빨강색 */
+    color: #ffffff; /* 입력 필드 텍스트 흰색 */
     outline: none;
-  }
- 
- 
-  
-  .login-input:focus {
-    border-color: #f44336;
-  }
-  
-  .login-button {
-    padding: 10px 16px;
+}
+
+.login-input:focus {
+    border-color: #f44336; /* 포커스 시 빨강색 */
+}
+
+.login-button {
+    padding: 12px;
     border-radius: 4px;
     border: none;
-    background: #000000; /* 버튼 빨강색 */
-    color: rgb(252, 252, 252);
+    background: #ff5252; /* 버튼 빨강색 */
+    color: #ffffff; /* 텍스트 흰색 */
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
-  }
-  
-  .login-button:hover {
-    background: #c62828; /* 버튼 호버 색상 */
-  }
-  
-  .google-login-button {
+}
+
+.login-button:hover {
+    background: #e53935; /* 버튼 호버 색상 */
+}
+
+.google-login-button {
     width: 100%;
-    padding: 10px 16px;
+    padding: 12px;
     border-radius: 4px;
-    border: 1px solid #000000;
-    background: #000000; /* 버튼 배경 어두운 색 */
-    color: #ffffff; /* 텍스트 빨강색 */
+    border: 1px solid #444;
+    background: #424242; /* 버튼 배경 어두운 색 */
+    color: #ffffff; /* 텍스트 흰색 */
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .google-login-button:hover{
-    background: #c62828;
-  }
-  
-  .error-message {
+}
+
+.google-login-button:hover {
+    background: #c62828; /* 호버 시 배경 색상 */
+}
+
+.error-message {
     color: #ff5252; /* 에러 메시지 빨강색 */
     margin-top: 8px;
     text-align: center;
-  }
-  
-  .signup-link {
-    color: #ffffff; /* 회원가입 링크 빨강색 */
+}
+
+.signup-link {
+    color: #ff5252; /* 회원가입 링크 빨강색 */
     text-align: center;
     display: block;
     margin-top: 12px;
-  }
-  
-  .signup-link:hover {
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.signup-link:hover {
     color: #e53935; /* 회원가입 링크 호버 빨강색 */
-  }
-  
+}
+
+.forgot-password-link {
+    margin-left: 25%;
+    color: #ffffff; /* 비밀번호 찾기 링크 색상 */
+}
+
+.forgot-password-link:hover {
+    color: #e53935; /* 비밀번호 찾기 링크 호버 빨강색 */
+}

@@ -13,10 +13,8 @@
 .nav-link {
     color: #ff0055;
     font-size: 1.2em;
-    position: absolute;
-    right: 30px;
-    top:15px; 
-   
+    margin-right: 20px; /* Right margin for spacing */
+    cursor: pointer;
 }
 
 .nav-link:hover {
@@ -27,13 +25,24 @@
 .navbar-collapse {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Center items vertically */
     width: 100%;
 }
 
-.login-link {
+.login-link, .join-link { /* Common styles for login and join buttons */
     color: #ff0055 !important;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 1em; /* Increased for visibility */
+    border: 1px solid #ff0055;
+    padding: 6px 14px;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.login-link:hover, .join-link:hover {
+    background-color: #ff0055;
+    color: #ffffff !important;
 }
 
 /* Dropdown Styles */
@@ -55,16 +64,17 @@
     background-color: #000000;
 }
 
-.form-inline{
+.form-inline {
     display: flex;
 }
-.form-control{
+
+.form-control {
     margin-left: 20px;
     margin-right: 20px;
     height: 30px;
-    
 }
 
-.btn-group{
+.btn-group {
     margin-left: 20px;
 }
+

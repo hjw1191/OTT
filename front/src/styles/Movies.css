@@ -71,3 +71,8 @@
   .top-button:hover {
     background-color: #c82333;
   }
+
+  .search{
+    width: 100%;
+    margin: 0;
+  }
