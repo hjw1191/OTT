@@ -29,7 +29,6 @@ function D_infor() {
   if (error) {
     return (
       <div>
-        <Navbar />
         <div className="container mt-5">
           <h2>Error</h2>
           <p>{error}</p>
