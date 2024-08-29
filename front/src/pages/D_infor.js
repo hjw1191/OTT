@@ -12,7 +12,7 @@ function D_infor() {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://web-ott-front-m09fpvc47fc6ed1f.sel4.cloudtype.app/D_infor/${id}`)
+      fetch(`https://web-ott-front-m09fpvc47fc6ed1f.sel4.cloudtype.app/api/dramas/${id}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
