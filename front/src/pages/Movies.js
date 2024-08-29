@@ -14,6 +14,8 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showTopButton, setShowTopButton] = useState(false);
   const [genreSelected, setGenreSelected] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [allMovies, setAllMovies] = useState([]); // 모든 영화를 저장할 새로운 상태
 
   const apiKey = 'b45a7315ca4d5041ba8599149d363b40';
   const popularMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
@@ -50,7 +52,7 @@ const Movies = () => {
 
       if (
         window.innerHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight - 50
-        && !isLoading
+        && !isLoading && !searchQuery
       ) {
         setPage((prevPage) => prevPage + 1);
       }
@@ -59,13 +61,25 @@ const Movies = () => {
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isLoading]);
+  }, [isLoading, searchQuery]);
 
   useEffect(() => {
-    if (page > 1) {
+    if (page > 1 && !searchQuery) {
       loadMoreMovies();
     }
-  }, [page]);
+  }, [page, searchQuery]);
+
+  useEffect(() => {
+    // 검색어가 변경될 때마다 영화 목록 업데이트
+    if (searchQuery) {
+      const filteredMovies = allMovies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setMovies(filteredMovies);
+    } else {
+      setMovies(allMovies);
+    }
+  }, [searchQuery, allMovies]);
 
   const fetchMovies = (url, setStateCallback, reset = false) => {
     setIsLoading(true);
@@ -80,6 +94,12 @@ const Movies = () => {
         } else {
           setStateCallback((prevMovies) => [...prevMovies, ...uniqueMovies]);
         }
+        setAllMovies((prevMovies) => {
+          const newMovies = [...prevMovies, ...uniqueMovies];
+          return newMovies.filter((movie, index, self) =>
+            index === self.findIndex((m) => m.id === movie.id)
+          );
+        });
         setIsLoading(false);
       })
       .catch((error) => {
@@ -105,15 +125,16 @@ const Movies = () => {
   };
 
   const handleGenreClick = (genre) => {
+    setSearchQuery(''); // 장르 클릭 시 검색어 초기화
     if (genre === '인기영상') {
       setGenreSelected(false);
-      setMovies(popularMovies); // 초기 화면으로 돌아감
+      setMovies(popularMovies);
     } else {
       const genreId = genreIds[genre];
       if (genreId) {
         setPage(1);
         setGenreSelected(true);
-        setMovies([]); // 기존 영화 리스트를 초기화
+        setMovies([]);
         const genreMoviesUrlWithPage = genreMoviesUrl(genreId);
         console.log(`Fetching movies for genre: ${genre}, URL: ${genreMoviesUrlWithPage}`);
         fetchMovies(genreMoviesUrlWithPage, setMovies, true);
@@ -125,9 +146,18 @@ const Movies = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setPage(1); // 검색 시 페이지 리셋
+  };
+
   const getFilteredMovies = () => {
-    const movieIdsInSliders = [...popularMovies, ...trendingMovies].map(movie => movie.id);
-    return movies.filter(movie => !movieIdsInSliders.includes(movie.id));
+    if (searchQuery) {
+      return movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    return movies;
   };
 
   const sliderSettings = {
@@ -164,8 +194,16 @@ const Movies = () => {
 
   return (
     <div>
-      <Navbar />
+
       <div className="container mt-3">
+      <input
+          type="text"
+          placeholder="영어로 검색하세요.."
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+          className="form-control mb-4 search"
+        />
+
         <div className="btn-group mb-4">
           {Object.keys(genreIds).map((genre) => (
             <button
@@ -178,7 +216,9 @@ const Movies = () => {
           ))}
         </div>
 
-        {!genreSelected && (
+        
+
+        {!searchQuery && !genreSelected && (
           <>
             <div className="popular-list-section">
               <h3>인기영상</h3>
@@ -210,7 +250,7 @@ const Movies = () => {
               <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie)} />
             ))
           ) : (
-            <p>No movies found. Please try a different genre.</p>
+            <p>No movies found. Please try a different search or genre.</p>
           )}
         </ul>
         {isLoading && <p>Loading more movies...</p>}

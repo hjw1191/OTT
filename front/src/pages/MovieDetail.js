@@ -48,7 +48,6 @@ const MovieDetail = () => {
 
     return (
         <div>
-         
             {movieDetails && (
                 <div 
                     className="movie-detail" 
