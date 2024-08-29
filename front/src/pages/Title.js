@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Login from '../components/Login';
 import '../styles/Drama.css';  
 import '../styles/Title.css';
 import L from '../components/L.png';
@@ -66,7 +68,7 @@ function DramaPage() {
         </div>
       </div>
 
-      <div className="slider-container reverse" style={{ marginTop: '20px' }}>
+      <div className="slider-container reverse" >
         <div className="slider-track">
           {extendedDramas.reverse().map((drama, index) => (
             <div className="slide" key={index}>
@@ -85,7 +87,7 @@ function DramaPage() {
       </div>
 
       {/* 비디오 섹션 추가 */}
-      <div style={{ marginTop: '150px', textAlign: 'center' }}>
+      <div style={{ marginTop: '100px', textAlign: 'center' }}>
         <figure className="wp-block-video">
           <figcaption className="wp-element-caption">Stable Video / ChatGPT / Midjourney를 활용하여 제작한 영화 예고편</figcaption>
           <video autoPlay muted controls src="https://smilegate.ai/wp-content/uploads/2024/05/@공허의-속삭임.mp4"></video>
@@ -109,7 +111,6 @@ const Title = () => {
           <h1>
             <div 
               className="link-container" 
-              onClick={() => navigate('/Movies')} // 클릭 시 /Movies 페이지로 이동
               style={{ cursor: 'pointer' }} // 클릭 가능한 느낌을 주기 위해 포인터 커서 적용
             >
             <img src={L} alt="L" className="letter" />
