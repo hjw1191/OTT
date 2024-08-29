@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvide
 import { X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
-import SignUp from './SignUp';  // SignUp 컴포넌트 import
+import SignUp from './SignUp'; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkUcabxV1k9--AKVo8A8S4VorjSRUUmGk",
@@ -51,7 +51,6 @@ const Login = ({ onClose }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       onClose();  // 로그인 성공 시 창 닫기
-      navigate('/move');  // /move 경로로 이동
     } catch (error) {
       setError(error.message);
     }
