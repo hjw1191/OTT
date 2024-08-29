@@ -48,7 +48,7 @@ const MovieDetail = () => {
 
     return (
         <div>
-            <Navbar />
+         
             {movieDetails && (
                 <div 
                     className="movie-detail" 
