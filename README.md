@@ -1,4 +1,4 @@
- OTT 프로젝트
+ OTT 프로젝트 (배포 https://app.cloudtype.io/)
 
  프로젝트 개요
 이 프로젝트는 React를 사용한 프론트엔드와 Node.js를 사용한 백엔드로 구성된 OTT(Over-The-Top) 스트리밍 플랫폼입니다. MongoDB를 사용하여 드라마 데이터를 관리하며, YouTube, TMDB, TuneFind, Vibe API를 통해 영화 및 음악 정보를 제공하는 기능을 구현했습니다. Cloudtype을 사용하여 프론트엔드와 백엔드를 함께 배포하여 쉽게 관리할 수 있도록 설정했습니다. 이 프로젝트는 개인이 처음으로 구현한 웹사이트 프로젝트입니다.
